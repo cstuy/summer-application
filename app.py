@@ -1,19 +1,51 @@
 from flask import Flask,session,render_template,redirect,request,url_for,flash
 import db 
-import json
+import json,os
 
-app = Flask(__name__)
+app = Flask(__name__,static_folder="applications")
 
-@app.route("/")
+@app.route("/",methods=['GET','POST'])
 def index():
     if not session.has_key('user'):
         return redirect(url_for('login'))
+    
+    questions = db.getanswers(session['user'])
 
-    questions = json.load(open("questions.json"))
+
+    if request.method=="GET":
+        for q in questions['questions']:
+            if q['name']=='email':
+                q['answer']=session['user']
+                
+        return render_template("index.html",questions=questions)
+
+    # POST
+    f =request.form
+    if f['button']=="Cancel and logout":
+        return redirect(url_for('logout'))
     for q in questions['questions']:
-        if q['name']=='email':
-            q['answer']=session['user']
-    return render_template("index.html",questions=questions)
+        if f.has_key(q['name']):
+            q['answer']=f[q['name']]
+            print q['type']
+
+
+    for f in request.files:
+        dirname="applications/"+session['user']
+        try:
+            os.mkdir(dirname)
+        except:
+            pass
+        
+        file = request.files[f]
+        filename=q['name']
+        file.save(dirname+"/"+filename)
+        for q in questions['questions']:
+            if q['name']==f:
+                q['answer']=file.filename
+
+    db.updateanswers(session['user'],questions)
+    flash("Application updated and saved")
+    return redirect(url_for("index"))
 
 @app.route("/changepassword")
 def changepassword():

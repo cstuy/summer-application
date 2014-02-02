@@ -37,6 +37,21 @@ def addUser(email,password):
 
 ################################################################################
 #
+#        questions
+#
+################################################################################
+def updateanswers(email,questions):
+    questions['email']=email
+    db.answers.update({'email':'email'},questions,upsert=True)
+def getanswers(email):
+    result = list(db.answers.find({'email':email}))
+    if len(result)==1:
+        return result[0]
+    return json.load(open("questions.json"))
+
+
+################################################################################
+#
 #        main (for testing)
 #
 ################################################################################

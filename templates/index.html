@@ -21,7 +21,7 @@
 
 {{questions.topmatter}}
 
-<form class="pure-form pure-form-stacked">
+<form class="pure-form pure-form-stacked" method="POST"  enctype="multipart/form-data">
 {% for q in questions.questions %}
 
 {% if q.type=="text"%}
@@ -29,12 +29,13 @@
 <input type="text" name="{{q.name}}" value="{{q.answer}}">
 {% elif q.type=="textarea"%}
 <label>{{q.label}}:</label>
-<textarea rows=10 cols=60>{{q.answer}}</textarea>
+<textarea rows=10 cols=60 name="{{q.name}}">{{q.answer}}</textarea>
 {% elif q.type=="label"%}
 <h2><label>{{q.label}}: {{q.answer}}</label></h2>
 {% elif q.type=="file"%}
 <label>{{q.label}}:</label>
 <input type="file" name="{{q.name}}">
+<a href="/applications/{{questions.email}}/{{q.name}}">{{q.answer}}</a>
 {% endif %}
 <hr>
 {% endfor %}
