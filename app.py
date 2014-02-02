@@ -1,4 +1,5 @@
-from flask import Flask,session,render_template,redirect,request,url_for
+from flask import Flask,session,render_template,redirect,request,url_for,flash
+import db 
 
 
 app = Flask(__name__)
@@ -10,16 +11,47 @@ def index():
     
     return "HELLO"
 
-@app.route("/login")
+@app.route("/login",methods=['GET','POST'])
 def login():
-    return "LOGIN"
+    if request.method=="GET":
+        return render_template('login.html')
+        
+    # post
+    email=request.form['email']
+    password=request.form['password']
+    result = db.checkCredentials(email,password)
+    print result
+    if result==False:
+        flash("Invalid username or password")
+        return render_template('login.html')
+    
+    session['user']=email
+    return redirect(url_for('index'))
+@app.route("/register", methods=['GET','POST'])
+def register():
+    if request.method=='GET':
+        return render_template('register.html')
 
+    # POST
+    d=request.form
+    email=d['email']
+    password=d['password']
+    cpassword=d['cpassword']
+    if (password!=cpassword):
+        flash("Passwords don't match")
+        return render_template('register.html')
+    result = db.addUser(email,password)
+    if result==None:
+        flash("Couldn't create account")
+        return render_template("register.html")
+    
+    return redirect(url_for('login'))
 @app.route("/logout")
 def logout():
     session.pop('user',None)
-    return "LOGIN"
+    return redirect(url_for('index'))
 
-app.secret="hello world"
+app.secret_key="hello world"
 if __name__ == '__main__':
     app.debug=True
     app.run(host='0.0.0.0',port=8000)
