@@ -1,0 +1,63 @@
+[{"name":"email",
+  "label":"email",
+  "type":"label"}
+,
+
+
+{"name":"last",
+  "label":"Last name",
+  "type":"text"}
+
+,
+
+{"name":"first",
+  "label":"First name",
+  "type":"text"}
+
+,
+
+{"name":"phone",
+  "label":"Home phone",
+  "type":"text"}
+
+,
+{"name":"parent",
+  "label":"Parent's name",
+  "type":"text"}
+,
+{"name":"pemail",
+  "label":"Parent's email",
+  "type":"text"}
+,
+{"name":"school",
+  "label":"Current school",
+  "type":"text"}
+,
+{"name":"grad",
+  "label":"Expected graduation date (month/year)",
+  "type":"text"}
+,
+{"name":"recemail",
+  "label":"Enter the email address for a teacher that has agreed to write a recommendation for you. We will contact him or her via this address to request the recommendation",
+  "type":"text"}
+,
+{"name":"essay1",
+  "label":"Why do you want to be a summer hacker",
+  "type":"textarea"}
+,
+
+{"name":"essay2",
+  "label":"What do you know",
+ type":"textarea"}
+,
+{"name":"transcript",
+  "label":"please upload a transcript",
+ type":"file"}
+,
+{"name":"vision",
+  "label":"Upload a vision board",
+ type":"file"}
+
+
+
+]
