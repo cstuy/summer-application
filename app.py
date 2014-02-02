@@ -9,7 +9,7 @@ def index():
     if not session.has_key('user'):
         return redirect(url_for('login'))
     
-    return "HELLO"
+    return render_template("index.html")
 
 @app.route("/login",methods=['GET','POST'])
 def login():
@@ -17,6 +17,9 @@ def login():
         return render_template('login.html')
         
     # post
+    button = request.form['button']
+    if button=='register':
+        return redirect(url_for('register'))
     email=request.form['email']
     password=request.form['password']
     result = db.checkCredentials(email,password)
@@ -34,6 +37,10 @@ def register():
 
     # POST
     d=request.form
+    button=d['button']
+    if button=='Home':
+        return redirect(url_for('index'))
+
     email=d['email']
     password=d['password']
     cpassword=d['cpassword']
