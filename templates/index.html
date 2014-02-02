@@ -1,6 +1,48 @@
 
 {% extends 'base.html' %}
 {% block body %}
+<br><br>
 
-You have logged in
+    <div class="pure-g">
+        <div class="pure-u-1-6">
+        </div>
+
+        <div class="pure-u-2-3">
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+
+{{questions.topmatter}}
+
+<form class="pure-form pure-form-stacked">
+{% for q in questions.questions %}
+
+{% if q.type=="text"%}
+<label>{{q.label}}:</label>
+<input type="text" name="{{q.name}}" value="{{q.answer}}">
+{% elif q.type=="textarea"%}
+<label>{{q.label}}:</label>
+<textarea rows=10 cols=60>{{q.answer}}</textarea>
+{% elif q.type=="label"%}
+<h2><label>{{q.label}}: {{q.answer}}</label></h2>
+{% elif q.type=="file"%}
+<label>{{q.label}}:</label>
+<input type="file" name="{{q.name}}">
+{% endif %}
+<hr>
+{% endfor %}
+<input type="submit" name="button" value="Update application">
+<input type="submit" name="button" value="Cancel and logout">
+<br><br>
+</form>
+	</div>
+    </div>
+
 {% endblock %}

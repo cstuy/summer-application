@@ -1,3 +1,6 @@
+{"topmatter":"hello there",
+
+ "questions":
 [{"name":"email",
   "label":"email",
   "type":"label","answer":""}
@@ -48,16 +51,16 @@
 
 {"name":"essay2",
   "label":"What do you know",
- type":"textarea","answer":""}
+ "type":"textarea","answer":""}
 ,
 {"name":"transcript",
   "label":"please upload a transcript",
- type":"file","answer":""}
+ "type":"file","answer":""}
 ,
 {"name":"vision",
   "label":"Upload a vision board",
- type":"file","answer":""}
+ "type":"file","answer":""}
 
 
 
-]
+]}

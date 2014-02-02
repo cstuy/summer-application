@@ -1,6 +1,6 @@
 from flask import Flask,session,render_template,redirect,request,url_for,flash
 import db 
-
+import json
 
 app = Flask(__name__)
 
@@ -8,8 +8,21 @@ app = Flask(__name__)
 def index():
     if not session.has_key('user'):
         return redirect(url_for('login'))
-    
-    return render_template("index.html")
+
+    questions = json.load(open("questions.json"))
+    for q in questions['questions']:
+        if q['name']=='email':
+            q['answer']=session['user']
+    return render_template("index.html",questions=questions)
+
+@app.route("/changepassword")
+def changepassword():
+    return "Change Password"
+
+@app.route("/forgotpassword")
+def forgotpassword():
+    return "Forgot Password"
+
 
 @app.route("/login",methods=['GET','POST'])
 def login():
