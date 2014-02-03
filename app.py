@@ -26,7 +26,6 @@ def index():
     for q in questions['questions']:
         if f.has_key(q['name']):
             q['answer']=f[q['name']]
-            print q['type']
 
 
     for f in request.files:
@@ -37,11 +36,12 @@ def index():
             pass
         
         file = request.files[f]
-        filename=q['name']
-        file.save(dirname+"/"+filename)
+        qname=f
+        filename=file.filename
         for q in questions['questions']:
-            if q['name']==f:
-                q['answer']=file.filename
+            if q['name']==qname and filename != "":
+                q['answer']=filename
+                file.save(dirname+"/"+qname)
 
     db.updateanswers(session['user'],questions)
     flash("Application updated and saved")
@@ -68,7 +68,6 @@ def login():
     email=request.form['email']
     password=request.form['password']
     result = db.checkCredentials(email,password)
-    print result
     if result==False:
         flash("Invalid username or password")
         return render_template('login.html')

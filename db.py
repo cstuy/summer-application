@@ -42,7 +42,9 @@ def addUser(email,password):
 ################################################################################
 def updateanswers(email,questions):
     questions['email']=email
-    db.answers.update({'email':'email'},questions,upsert=True)
+    result = db.answers.update({'email':email},questions,upsert=True)
+    print result
+
 def getanswers(email):
     result = list(db.answers.find({'email':email}))
     if len(result)==1:
