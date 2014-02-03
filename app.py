@@ -1,6 +1,7 @@
 from flask import Flask,session,render_template,redirect,request,url_for,flash
 import db 
 import json,os
+from bson.json_util import dumps
 
 app = Flask(__name__,static_folder="applications")
 
@@ -27,13 +28,18 @@ def index():
         if f.has_key(q['name']):
             q['answer']=f[q['name']]
 
+    dirname="applications/"+session['user']
+    try:
+        os.mkdir(dirname)
+    except:
+        pass
 
+    output = open(dirname+"/answers.json","w")
+    outputstring = dumps(questions,output)
+    output.write(outputstring)
+    output.close()
+    
     for f in request.files:
-        dirname="applications/"+session['user']
-        try:
-            os.mkdir(dirname)
-        except:
-            pass
         
         file = request.files[f]
         qname=f
@@ -43,6 +49,7 @@ def index():
                 q['answer']=filename
                 file.save(dirname+"/"+qname)
 
+    
     db.updateanswers(session['user'],questions)
     flash("Application updated and saved")
     return redirect(url_for("index"))

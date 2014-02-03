@@ -18,6 +18,11 @@
   "type":"text","answer":""}
 
 ,
+{"name":"gender",
+  "label":"Gender",
+ "choices":["male","female","other"],
+  "type":"choice","answer":""}
+,
 
 {"name":"phone",
   "label":"Home phone",

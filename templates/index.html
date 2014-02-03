@@ -21,7 +21,7 @@
 
 {{questions.topmatter}}
 
-<form class="pure-form pure-form-stacked" method="POST"  enctype="multipart/form-data">
+<form class="pure-form " method="POST"  enctype="multipart/form-data">
 {% for q in questions.questions %}
 
 {% if q.type=="text"%}
@@ -36,6 +36,17 @@
 <label>{{q.label}}:</label>
 <input type="file" name="{{q.name}}">
 <a href="/applications/{{questions.email}}/{{q.name}}">{{q.answer}}</a>
+{% elif q.type=="choice"%}
+<label>{{q.label}}:</label>
+{% for c in q.choices %}
+<label>{{c}}:</label>
+  {% if c!=q.answer %}
+  <input type="radio" name={{q.name}} value="{{c}}">
+  {% else %}
+  <input type="radio" name={{q.name}} value="{{c}}" checked="true">
+  {% endif %}
+{% endfor %}
+
 {% endif %}
 <hr>
 {% endfor %}
