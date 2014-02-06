@@ -56,12 +56,16 @@ def index():
 
 @app.route("/changepassword")
 def changepassword():
-    return "Change Password"
+    return render_template('changepassword.html')
 
-@app.route("/forgotpassword")
+@app.route("/forgotpassword",methods=['GET','POST'])
 def forgotpassword():
-    return "Forgot Password"
+    if request.method=="GET":
+        return render_template("forgot_password.html")
 
+    # do the send the password magic here
+    flash("Doing the password magic")
+    return redirect(url_for('index'))
 
 @app.route("/login",methods=['GET','POST'])
 def login():
@@ -70,6 +74,11 @@ def login():
         
     # post
     button = request.form['button']
+    if button=="forgot":
+        return redirect(url_for('forgotpassword'))
+
+
+
     if button=='register':
         return redirect(url_for('register'))
     email=request.form['email']
