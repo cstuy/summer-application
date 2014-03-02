@@ -1,0 +1,71 @@
+{"topmatter":"hello there",
+
+ "questions":
+[{"name":"email",
+  "label":"email",
+  "type":"label","answer":""}
+,
+
+
+{"name":"last",
+  "label":"Last name",
+  "type":"text","answer":""}
+
+,
+
+{"name":"first",
+  "label":"First name",
+  "type":"text","answer":""}
+
+,
+{"name":"gender",
+  "label":"Gender",
+ "choices":["male","female","other"],
+  "type":"choice","answer":""}
+,
+
+{"name":"phone",
+  "label":"Home phone",
+  "type":"text","answer":""}
+
+,
+{"name":"parent",
+  "label":"Parent's name",
+  "type":"text","answer":""}
+,
+{"name":"pemail",
+  "label":"Parent's email",
+  "type":"text","answer":""}
+,
+{"name":"school",
+  "label":"Current school",
+  "type":"text","answer":""}
+,
+{"name":"grad",
+  "label":"Expected graduation date (month/year)",
+  "type":"text","answer":""}
+,
+{"name":"recemail",
+  "label":"Enter the email address for a teacher that has agreed to write a recommendation for you. We will contact him or her via this address to request the recommendation",
+  "type":"text","answer":""}
+,
+{"name":"essay1",
+  "label":"Why do you want to be a summer hacker",
+  "type":"textarea","answer":""}
+,
+
+{"name":"essay2",
+  "label":"What do you know",
+ "type":"textarea","answer":""}
+,
+{"name":"transcript",
+  "label":"please upload a transcript",
+ "type":"file","answer":""}
+,
+{"name":"vision",
+  "label":"Upload a vision board",
+ "type":"file","answer":""}
+
+
+
+]}
