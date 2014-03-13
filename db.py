@@ -47,9 +47,16 @@ def updateanswers(email,questions):
 
 def getanswers(email):
     result = list(db.answers.find({'email':email}))
+    qs = json.load(open("questions.json"))
     if len(result)==1:
-        return result[0]
-    return json.load(open("questions.json"))
+        r = result[0]
+        keys = [ x['name'] for x in r['questions']]
+        for q in qs['questions']:
+            print q
+            if q['name'] not in keys:
+                r['questions'].append(q)
+        return r
+    return qs
 
 
 ################################################################################

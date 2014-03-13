@@ -27,6 +27,10 @@
   "label":"Which jobs are you interested in?",
   "type":"textarea","answer":""}
 ,
+{"name":"feedback",
+  "label":"feedback stuff",
+  "type":"textarea","answer":""}
+,
 
 {"name":"resume",
   "label":"please upload your resume",
