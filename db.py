@@ -26,6 +26,13 @@ def checkCredentials(email,password):
     res=users.find({"email":email,"password":password})
     return len([x for x in res])==1
 
+def getCredentials(email):
+    res=users.find({"email":email})
+    if res.count() == 1:
+        return res[0]
+    else:
+        return None
+
 def addUser(email,password):
     res = users.find({'email':email})
     if len([x for x in res])>0:

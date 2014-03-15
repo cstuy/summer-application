@@ -2,6 +2,7 @@ from flask import Flask,session,render_template,redirect,request,url_for,flash
 import db 
 import json,os
 from bson.json_util import dumps
+import mail
 
 app = Flask(__name__,static_folder="applications")
 
@@ -51,7 +52,8 @@ def index():
 
     
     db.updateanswers(session['user'],questions)
-    flash("Application updated and saved")
+    mail.send_confirmation(session['user'],questions)
+    flash("Application updated and saved - confirmation email sent - Remember to log out")
     return redirect(url_for("index"))
 
 @app.route("/changepassword")
@@ -64,7 +66,8 @@ def forgotpassword():
         return render_template("forgot_password.html")
 
     # do the send the password magic here
-    flash("Doing the password magic")
+    mail.send_password(request.form['email'])
+    flash("Email sent");
     return redirect(url_for('index'))
 
 @app.route("/login",methods=['GET','POST'])
