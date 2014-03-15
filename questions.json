@@ -23,12 +23,21 @@
   "type":"text","answer":""}
 
 ,
+{"name":"gradyear",
+  "label":"What year will you graduate from high school",
+  "type":"text","answer":""}
+
+,
 {"name":"jobs",
   "label":"Which jobs are you interested in?",
   "type":"textarea","answer":""}
 ,
-{"name":"feedback",
-  "label":"feedback stuff",
+{"name":"info",
+  "label":"Please share any relavent info not on your resume.",
+  "type":"textarea","answer":""}
+,
+{"name":"updates",
+  "label":"Please use these area for follow up info (did you interview, did you get the job, etc. ",
   "type":"textarea","answer":""}
 ,
 
