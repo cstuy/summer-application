@@ -1,6 +1,7 @@
 from pymongo import Connection
 import json,time
 
+qfile = "questions.json"
 
 ################################################################################
 #
@@ -54,7 +55,7 @@ def updateanswers(email,questions):
 
 def getanswers(email):
     result = list(db.answers.find({'email':email}))
-    qs = json.load(open("questions.json"))
+    qs = json.load(qfile)
     if len(result)==1:
         r = result[0]
         keys = [ x['name'] for x in r['questions']]
