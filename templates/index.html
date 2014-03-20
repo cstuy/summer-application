@@ -19,43 +19,46 @@
   {% endif %}
 {% endwith %}
 
-
+    <br>
 {{questions.topmatter}}
-
+    <br>
+    <hr>
 <form class="pure-form " method="POST"  enctype="multipart/form-data">
-{% for q in questions.questions %}
+
+  {% for q in questions.questions|sort(attribute="num") %}
 
 {% if q.type=="text"%}
-<label>{{q.label}}:</label>
-<input type="text" name="{{q.name}}" value="{{q.answer}}">
+  <label>{{q.label}}:</label>
+  <input type="text" name="{{q.name}}" value="{{q.answer}}">
 {% elif q.type=="textarea"%}
-<label>{{q.label}}:</label>
-<textarea rows=10 cols=60 name="{{q.name}}">{{q.answer}}</textarea>
+  <label>{{q.label}}:</label>
+  <textarea rows=10 cols=60 name="{{q.name}}">{{q.answer}}</textarea>
 {% elif q.type=="label"%}
-<h2><label>{{q.label}}: {{q.answer}}</label></h2>
+  <h2><label>{{q.label}}: {{q.answer}}</label></h2>
 {% elif q.type=="file"%}
-<label>{{q.label}}:</label>
-<input type="file" name="{{q.name}}">
-<a href="/applications/{{questions.email}}/{{q.name}}">{{q.answer}}</a>
+  <label>{{q.label}}:</label>
+  <input type="file" name="{{q.name}}">
+  <a href="/applications/{{questions.email}}/{{q.name}}">{{q.answer}}</a>
 {% elif q.type=="choice"%}
-<label>{{q.label}}:</label>
-{% for c in q.choices %}
-<label>{{c}}:</label>
-  {% if c!=q.answer %}
-  <input type="radio" name={{q.name}} value="{{c}}">
-  {% else %}
-  <input type="radio" name={{q.name}} value="{{c}}" checked="true">
-  {% endif %}
-{% endfor %}
-
+  <label>{{q.label}}:</label>
+  {% for c in q.choices %}
+  <label>{{c}}:</label>
+    {% if c!=q.answer %}
+      <input type="radio" name={{q.name}} value="{{c}}">
+    {% else %}
+      <input type="radio" name={{q.name}} value="{{c}}" checked="true">
+    {% endif %}
+      {% endfor %}
+    {% elif q.type=="info"%}
+      {{q.label}}
 {% endif %}
-<hr>
-{% endfor %}
-<input type="submit" name="button" value="Update application">
-<input type="submit" name="button" value="Cancel and logout">
-<br><br>
+  <hr>
+  {% endfor %}
+  <input type="submit" name="button" value="Save/Update application and logout">
+  <input type="submit" name="button" value="Cancel and logout">
+  <br><br>
 </form>
 	</div>
     </div>
-
+    
 {% endblock %}

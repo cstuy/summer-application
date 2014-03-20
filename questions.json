@@ -1,48 +1,121 @@
-{"topmatter":"Please upload your resume and list the jobs your interested in. You can always log in later to update this applications as more opportunities present themselves.",
+{"topmatter":"To apply for a spot in SHIP, please fill out this form. If you wish to update your application after submitting, just return to this page, log in, change your answers, and submit again. Remember - we are accepting applicants with no experience as well as experience programmers. Only experienced programmers should fill out the last few questions.",
 
  "questions":
-[{"name":"email",
-  "label":"email",
-  "type":"label","answer":""}
+ [{"num":"01",
+   "name":"email",
+  "label":"Email (that we should use to contact you)",
+  "type":"text","answer":""}
 ,
 
 
-{"name":"last",
+  {"num":"02",
+   "name":"last",
   "label":"Last name",
   "type":"text","answer":""}
 
 ,
 
-{"name":"first",
+  {"num":"03",
+   "name":"first",
   "label":"First name",
   "type":"text","answer":""}
 ,
 
-{"name":"teacher",
-  "label":"Current CS teacher",
+  {"num":"04",
+   "name":"dob",
+  "label":"Date of Birth",
   "type":"text","answer":""}
+  
+  ,
+  {"num":"05",
+   "name":"grade",
+   "label":"Current grade",
+   "choices":["8","9","10","11"],
+   "type":"choice","answer":""}
+  ,
+  {"num":"06",
+   "name":"parent",
+   "label":"Parent or guardian's full name",
+   "type":"text","answer":""
+  }
+  ,
+  {"num":"06",
+   "name":"phone",
+   "label":"Phone number",
+   "type":"text","answer":""
+  }
 
-,
-{"name":"gradyear",
-  "label":"What year will you graduate from high school",
-  "type":"text","answer":""}
+  ,
+  {"num":"07",
+   "name":"address",
+   "label":"Full mailing address:",
+   "type":"textarea","answer":""
+  }
+    ,
+  {"num":"08",
+   "name":"school",
+   "label":"Current school name",
+   "type":"text","answer":""
+  },
+  {"num":"09",
+   "name":"school web",
+   "label":"Current school web site",
+   "type":"text","answer":""
+  },
+  {"num":"10",
+   "name":"rec1name",
+   "label":"Name of 1st recommender (teacher preferred)",
+   "type":"text","answer":""},
+  {"num":"11",
+   "name":"rec1email",
+   "label":"Email address of 1st recommender",
+   "type":"text","answer":""},
+  {"num":"12",
+   "name":"rec2name",
+   "label":"Name of 2nd recommender (optional)",
+   "type":"text","answer":""},
+  {"num":"13",
+   "name":"rec2email",
+   "label":"Email address of 2nd recommender",
+   "type":"text","answer":""},
+  {"num":"14",
+   "name":"transcript",
+   "label":"Please upload your school transcript (unofficial copy is ok)",
+   "type":"file","answer":""},
+  {"num":"15",
+   "name":"experience",
+   "label":"Your programming background",
+   "choices":["Never programmed","I've programmed a bit","I'm an experienced programmer"],
+   "type":"choice","answer":""},
+    {"num":"16",
+   "name":"essay1",
+   "label":"What sparked your interest in our program",
+   "type":"textarea","answer":""},
+  {"num":"17",
+   "name":"essay2",
+   "label":"What do you want to be able to do after the program is over",
+   "type":"textarea","answer":""},
+    
+  {"num":"18",
+   "name":"info1",
+   "label":"Only answer the rest of the questions if you have some coding experience. If you're a beginner, just go to the bottom of the form to submit your application",
+   "type":"info","answer":""}
+  ,
+  {"num":"19",
+   "name":"essay3",
+   "label":"Describe how you learned your current programming skills",
+   "type":"textarea","answer":""},
+  {"num":"20",
+   "name":"essay4",
+   "label":"List the languages / environments you are familiar with",
+   "type":"textarea","answer":""},
+  {"num":"21",
+   "name":"codesample",
+   "label":"Please upload a code sample (can be a file, or zip)",
+   "type":"file","answer":""}
 
-,
-{"name":"jobs",
-  "label":"Which jobs are you interested in?",
-  "type":"textarea","answer":""}
-,
-{"name":"info",
-  "label":"Please share any relavent info not on your resume.",
-  "type":"textarea","answer":""}
-,
-{"name":"updates",
-  "label":"Please use these area for follow up info (did you interview, did you get the job, etc. ",
-  "type":"textarea","answer":""}
-,
 
-{"name":"resume",
-  "label":"please upload your resume",
- "type":"file","answer":""}
 
-]}
+ ]}
+
+

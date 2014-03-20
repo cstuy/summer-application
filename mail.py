@@ -5,9 +5,9 @@ import db
 # Import the email modules we'll need
 from email.mime.text import MIMEText
 
-def send_email(user,message):
+def send_email(user,message,sub):
     msg = MIMEText(message)
-    msg['Subject'] = 'Password reminder'
+    msg['Subject'] = sub
     msg['From'] = "no-reply@cstuy.org"
     msg['To'] = user
     s = smtplib.SMTP('localhost')
@@ -18,14 +18,14 @@ def send_confirmation(user,questions):
     message="Submission for %s\n--------------\n"%(user)
     for q in questions['questions']:
         message = message + q['label']+" : "+q['answer']+"\n--------------------\n"
-    send_email(user,message)
+    send_email(user,message,"CSTUY SHIP Application saved")
 
 def send_password(u):
     user=db.getCredentials(u)
     if user==None:
         return
     m="Your password (for this email address) is: %s"%(user['password'])
-    send_email(u,m)
+    send_email(u,m,"CSTUY SHIP Password Reminder")
 
 
 if __name__=="__main__":

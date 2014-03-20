@@ -54,7 +54,7 @@ def index():
     db.updateanswers(session['user'],questions)
     mail.send_confirmation(session['user'],questions)
     flash("Application updated and saved - confirmation email sent - Remember to log out")
-    return redirect(url_for("index"))
+    return redirect(url_for("logout"))
 
 @app.route("/changepassword")
 def changepassword():
